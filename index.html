@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dosa Corner | Authentic South Indian Restaurant</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #fff8dc;
+            color: #3b1708;
+            line-height: 1.6;
+        }
+
+        /* NAVBAR */
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 18px 8%;
+            background: #7b1e12;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.25);
+        }
+
+        .logo {
+            color: #ffd43b;
+            font-size: 28px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav ul li a {
+            color: #fff8dc;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #ffd43b;
+        }
+
+        /* HERO */
+
+        .hero {
+            height: 100vh;
+            background:
+                linear-gradient(
+                    rgba(80, 20, 5, 0.65),
+                    rgba(120, 30, 10, 0.75)
+                ),
+                url("https://images.unsplash.com/photo-1668236543090-82eba5ee5976?auto=format&fit=crop&w=1600&q=80");
+
+            background-size: cover;
+            background-position: center;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+            color: white;
+        }
+
+        .hero-content {
+            max-width: 850px;
+            padding: 30px;
+            animation: heroFade 1.5s ease;
+        }
+
+        .hero h1 {
+            font-size: 70px;
+            color: #ffd43b;
+            margin-bottom: 15px;
+            text-shadow: 3px 3px 10px #000;
+        }
+
+        .hero h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 14px 30px;
+            margin: 5px;
+            border-radius: 30px;
+            background: #ffd43b;
+            color: #6d190d;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .button:hover {
+            background: #fff;
+            transform: translateY(-4px);
+        }
+
+        .button-red {
+            background: #9e2918;
+            color: white;
+            border: 2px solid #ffd43b;
+        }
+
+        /* GENERAL SECTIONS */
+
+        section {
+            padding: 100px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 42px;
+            color: #8c2415;
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: #704b3d;
+        }
+
+        /* ABOUT */
+
+        .about {
+            background: #fff8dc;
+        }
+
+        .about-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(100, 30, 10, 0.25);
+        }
+
+        .about-text h3 {
+            font-size: 32px;
+            color: #9e2918;
+            margin-bottom: 20px;
+        }
+
+        .about-text p {
+            color: #5e4035;
+            margin-bottom: 15px;
+        }
+
+        /* MENU */
+
+        .menu {
+            background: #fff1b8;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .menu-card {
+            background: #fffaf0;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(120, 40, 10, 0.15);
+            transition: 0.4s;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(120, 40, 10, 0.25);
+        }
+
+        .menu-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .menu-content {
+            padding: 25px;
+        }
+
+        .menu-content h3 {
+            color: #8c2415;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .menu-content p {
+            color: #68473b;
+            margin-bottom: 15px;
+        }
+
+        .price {
+            color: #c17a00;
+            font-size: 21px;
+            font-weight: bold;
+        }
+
+        /* FEATURES */
+
+        .features {
+            background: #8c2415;
+            color: white;
+        }
+
+        .features .section-title h2 {
+            color: #ffd43b;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            text-align: center;
+        }
+
+        .feature {
+            padding: 30px;
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 15px;
+            transition: 0.3s;
+        }
+
+        .feature:hover {
+            background: #a52d1c;
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 45px;
+            margin-bottom: 15px;
+        }
+
+        .feature h3 {
+            color: #ffd43b;
+            margin-bottom: 10px;
+        }
+
+        /* CONTACT */
+
+        .contact {
+            background: #fff8dc;
+            text-align: center;
+        }
+
+        .contact-box {
+            max-width: 700px;
+            margin: auto;
+            background: #7b1e12;
+            color: white;
+            padding: 45px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(80,20,5,0.25);
+        }
+
+        .contact-box h2 {
+            color: #ffd43b;
+            font-size: 38px;
+            margin-bottom: 20px;
+        }
+
+        .contact-box p {
+            margin: 12px;
+        }
+
+        /* FOOTER */
+
+        footer {
+            background: #3d1008;
+            color: #ffe9a8;
+            text-align: center;
+            padding: 25px;
+        }
+
+        /* SCROLL REVEAL */
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(60px);
+            transition: all 1s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* HERO ANIMATION */
+
+        @keyframes heroFade {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 768px) {
+
+            nav {
+                padding: 15px 5%;
+            }
+
+            nav ul {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 48px;
+            }
+
+            .hero h2 {
+                font-size: 25px;
+            }
+
+            .hero p {
+                font-size: 17px;
+            }
+
+            .about-container {
+                grid-template-columns: 1fr;
+            }
+
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+
+    <nav>
+
+        <div class="logo">
+            DOSA CORNER
+        </div>
+
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#features">Why Us</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+
+    </nav>
+
+
+    <!-- HERO -->
+
+    <section class="hero" id="home">
+
+        <div class="hero-content">
+
+            <h1>DOSA CORNER</h1>
+
+            <h2>Authentic South Indian Flavours</h2>
+
+            <p>
+                Crispy dosas, delicious idlis, aromatic sambar
+                and traditional recipes served fresh every day.
+            </p>
+
+            <a href="#menu" class="button">
+                Explore Our Menu
+            </a>
+
+            <a href="#contact" class="button button-red">
+                Visit Us
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- ABOUT -->
+
+    <section class="about reveal" id="about">
+
+        <div class="about-container">
+
+            <div class="about-image">
+
+                <img
+                    src="https://images.unsplash.com/photo-1630383249896-424e482df921?auto=format&fit=crop&w=1000&q=80"
+                    alt="South Indian Dosa">
+
+            </div>
+
+            <div class="about-text">
+
+                <h3>Welcome to Dosa Corner</h3>
+
+                <p>
+                    At Dosa Corner, we celebrate the rich and delicious
+                    flavours of South Indian cuisine.
+                </p>
+
+                <p>
+                    Our dishes are prepared using fresh ingredients,
+                    traditional recipes and plenty of love.
+                </p>
+
+                <p>
+                    From a crispy golden dosa in the morning to a
+                    comforting South Indian meal with family,
+                    every visit should feel special.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- MENU -->
+
+    <section class="menu reveal" id="menu">
+
+        <div class="section-title">
+
+            <h2>Our Special Menu</h2>
+
+            <p>
+                Traditional favourites prepared fresh from our kitchen
+            </p>
+
+        </div>
+
+
+        <div class="menu-grid">
+
+            <!-- DOSA -->
+
+            <div class="menu-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1668236543090-82eba5ee5976?auto=format&fit=crop&w=800&q=80"
+                    alt="Masala Dosa">
+
+                <div class="menu-content">
+
+                    <h3>Masala Dosa</h3>
+
+                    <p>
+                        Crispy golden dosa filled with spicy potato
+                        masala, served with sambar and chutney.
+                    </p>
+
+                    <div class="price">
+                        ₹120
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- IDLI -->
+
+            <div class="menu-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1589302168068-964664d93dc0?auto=format&fit=crop&w=800&q=80"
+                    alt="Idli">
+
+                <div class="menu-content">
+
+                    <h3>Idli & Sambar</h3>
+
+                    <p>
+                        Soft steamed idlis served with traditional
+                        sambar and coconut chutney.
+                    </p>
+
+                    <div class="price">
+                        ₹80
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- THALI -->
+
+            <div class="menu-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=800&q=80"
+                    alt="South Indian Thali">
+
+                <div class="menu-content">
+
+                    <h3>South Indian Thali</h3>
+
+                    <p>
+                        A complete traditional meal with rice,
+                        vegetables, curries, sambar and dessert.
+                    </p>
+
+                    <div class="price">
+                        ₹220
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- VADA -->
+
+            <div class="menu-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=800&q=80"
+                    alt="Vada">
+
+                <div class="menu-content">
+
+                    <h3>Medu Vada</h3>
+
+                    <p>
+                        Crispy outside and soft inside, served with
+                        hot sambar and coconut chutney.
+                    </p>
+
+                    <div class="price">
+                        ₹70
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- PONGAL -->
+
+            <div class="menu-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1630383249896-424e482df921?auto=format&fit=crop&w=800&q=80"
+                    alt="Pongal">
+
+                <div class="menu-content">
+
+                    <h3>Ven Pongal</h3>
+
+                    <p>
+                        Creamy traditional rice and lentil pongal
+                        topped with aromatic spices and ghee.
+                    </p>
+
+                    <div class="price">
+                        ₹100
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- FILTER COFFEE -->
+
+            <div class="menu-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=800&q=80"
+                    alt="Filter Coffee">
+
+                <div class="menu-content">
+
+                    <h3>Filter Coffee</h3>
+
+                    <p>
+                        Traditional South Indian filter coffee,
+                        freshly brewed and served hot.
+                    </p>
+
+                    <div class="price">
+                        ₹50
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- WHY US -->
+
+    <section class="features reveal" id="features">
+
+        <div class="section-title">
+
+            <h2>Why Dosa Corner?</h2>
+
+            <p style="color:#ffe9a8;">
+                Simple food. Traditional taste. Happy customers.
+            </p>
+
+        </div>
+
+
+        <div class="features-grid">
+
+            <div class="feature">
+
+                <div class="feature-icon">🌾</div>
+
+                <h3>Fresh Ingredients</h3>
+
+                <p>
+                    We use fresh and carefully selected ingredients
+                    in every dish.
+                </p>
+
+            </div>
+
+
+            <div class="feature">
+
+                <div class="feature-icon">👨‍🍳</div>
+
+                <h3>Traditional Recipes</h3>
+
+                <p>
+                    Authentic recipes inspired by generations of
+                    South Indian cooking.
+                </p>
+
+            </div>
+
+
+            <div class="feature">
+
+                <div class="feature-icon">❤️</div>
+
+                <h3>Made With Love</h3>
+
+                <p>
+                    Every plate is prepared with care to give you
+                    a memorable dining experience.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CONTACT -->
+
+    <section class="contact reveal" id="contact">
+
+        <div class="contact-box">
+
+            <h2>Visit Dosa Corner</h2>
+
+            <p>📍 Coimbatore, Tamil Nadu</p>
+
+            <p>📞 +91 98765 43210</p>
+
+            <p>✉️ hello@dosacorner.com</p>
+
+            <br>
+
+            <a href="#home" class="button">
+                Back to Top
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <p>
+            © 2026 Dosa Corner | Authentic South Indian Cuisine
+        </p>
+
+    </footer>
+
+
+    <!-- SCROLL ANIMATION -->
+
+    <script>
+
+        const reveals = document.querySelectorAll(".reveal");
+
+        function revealOnScroll() {
+
+            reveals.forEach(element => {
+
+                const windowHeight = window.innerHeight;
+
+                const elementTop = element.getBoundingClientRect().top;
+
+                const revealPoint = 120;
+
+                if (elementTop < windowHeight - revealPoint) {
+
+                    element.classList.add("active");
+
+                }
+
+            });
+
+        }
+
+        window.addEventListener("scroll", revealOnScroll);
+
+        revealOnScroll();
+
+    </script>
+
+</body>
+</html>
